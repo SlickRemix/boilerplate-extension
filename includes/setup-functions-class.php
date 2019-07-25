@@ -338,7 +338,7 @@ class Setup_Functions {
 		$wp_admin_bar->add_menu(
 			array(
 				'id'    => 'ft_gallery_admin_bar',
-				'title' => esc_html__( 'Feed Them Gallery', 'ft-gallery' ),
+				'title' => esc_html__( 'Feed Them Gallery', CURRENT_PLUGIN_TEXT_DOMAIN ),
 				'href'  => false,
 			)
 		);
@@ -347,7 +347,7 @@ class Setup_Functions {
 			array(
 				'id'     => 'ft_gallery_admin_bar_view_galleries',
 				'parent' => 'ft_gallery_admin_bar',
-				'title'  => esc_html__( 'Galleries ', 'ft-gallery' ),
+				'title'  => esc_html__( 'Galleries ', CURRENT_PLUGIN_TEXT_DOMAIN ),
 				'href'   => admin_url( 'edit.php?post_type=ft_gallery' ),
 			)
 		);
@@ -356,7 +356,7 @@ class Setup_Functions {
 			array(
 				'id'     => 'ft_gallery_admin_bar_new_gallery',
 				'parent' => 'ft_gallery_admin_bar',
-				'title'  => esc_html__( 'Add Gallery ', 'ft-gallery' ),
+				'title'  => esc_html__( 'Add Gallery ', CURRENT_PLUGIN_TEXT_DOMAIN ),
 				'href'   => admin_url( 'post-new.php?post_type=ft_gallery' ),
 			)
 		);
@@ -365,7 +365,7 @@ class Setup_Functions {
 			array(
 				'id'     => 'ft_gallery_admin_bar_settings',
 				'parent' => 'ft_gallery_admin_bar',
-				'title'  => esc_html__( 'Settings', 'ft-gallery' ),
+				'title'  => esc_html__( 'Settings', CURRENT_PLUGIN_TEXT_DOMAIN ),
 				'href'   => admin_url( 'edit.php?post_type=ft_gallery&page=ft-gallery-settings-page' ),
 			)
 		);
@@ -375,7 +375,7 @@ class Setup_Functions {
 			array(
 				'id'     => 'ft_gallery_admin_bar_system_info',
 				'parent' => 'ft_gallery_admin_bar',
-				'title'  => esc_html__( 'System Info', 'ft-gallery' ),
+				'title'  => esc_html__( 'System Info', CURRENT_PLUGIN_TEXT_DOMAIN ),
 				'href'   => admin_url( 'edit.php?post_type=ft_gallery&page=ft-gallery-system-info-submenu-page' ),
 			)
 		);
@@ -385,7 +385,7 @@ class Setup_Functions {
 				array(
 					'id'     => 'ft_gallery_admin_bar_plugin_license',
 					'parent' => 'ft_gallery_admin_bar',
-					'title'  => esc_html__( 'Plugin License', 'ft-gallery' ),
+					'title'  => esc_html__( 'Plugin License', CURRENT_PLUGIN_TEXT_DOMAIN ),
 					'href'   => admin_url( 'edit.php?post_type=ft_gallery&page=ft-gallery-license-page' ),
 				)
 			);

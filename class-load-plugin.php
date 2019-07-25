@@ -23,6 +23,15 @@ class BOILER_PLATE_CLASS {
 	public $rel_plugin_path = 'boilerplate-extension/boilerplate-extension.php';
 
 	/**
+	 * Name of the Text Domain. The constant is set below for this and should be used for text domain: CURRENT_PLUGIN_TEXT_DOMAIN .
+	 *
+	 * @var string
+	 */
+	public $text_domain = 'boilerplate-extension';
+
+
+
+	/**
 	 * Load Function
 	 *
 	 * Load up all our actions and filters.
@@ -111,9 +120,15 @@ class BOILER_PLATE_CLASS {
 		if ( ! defined( '\CURRENT_PLUGIN_PATH' ) ) {
 			define( __NAMESPACE__ . '\CURRENT_PLUGIN_PATH', plugins_url() );
 		}
+
 		// Plugin Directory Path.
 		if ( ! defined( __NAMESPACE__ . '\CURRENT_PLUGIN_FOLDER_DIR' ) ) {
 			define( __NAMESPACE__ . '\CURRENT_PLUGIN_FOLDER_DIR', plugin_dir_path( __FILE__ ) );
+		}
+
+		// Translation String Name.
+		if ( ! defined( __NAMESPACE__ . '\CURRENT_PLUGIN_TEXT_DOMAIN' ) ) {
+			define( __NAMESPACE__ . '\CURRENT_PLUGIN_TEXT_DOMAIN', $plugin_loaded->text_domain );
 		}
 
 		// Premium Plugin Directoy Path.
@@ -257,7 +272,7 @@ class BOILER_PLATE_CLASS {
 		// Check the transient to see if we've just updated the plugin.
 		if ( get_transient( 'ftgallery_updated' ) ) {
 			echo sprintf(
-				esc_html__( '%1$sThanks for updating Feed Them Social. We have deleted the cache in our plugin so you can view any changes we have made.%2$s', 'feed-them-gallery' ),
+				esc_html__( '%1$sThanks for updating Feed Them Social. We have deleted the cache in our plugin so you can view any changes we have made.%2$s', CURRENT_PLUGIN_TEXT_DOMAIN ),
 				'<div class="notice notice-success updated is-dismissible"><p>',
 				'</p></div>'
 			);
@@ -277,7 +292,7 @@ class BOILER_PLATE_CLASS {
 		if ( get_transient( 'ftgallery_activated' ) ) {
 
 			echo sprintf(
-				esc_html__( '%1$sThanks for installing Feed Them Gallery. To get started please view our %2$sSettings%3$s page.%4$s', 'feed-them-gallery' ),
+				esc_html__( '%1$sThanks for installing Feed Them Gallery. To get started please view our %2$sSettings%3$s page.%4$s', CURRENT_PLUGIN_TEXT_DOMAIN ),
 				'<div class="notice notice-success updated is-dismissible"><p>',
 				'<a href="' . esc_url( 'edit.php?post_type=ft_gallery&page=ft-gallery-settings-page' ) . '">',
 				'</a>',
@@ -308,7 +323,7 @@ class BOILER_PLATE_CLASS {
 	 */
 	public function ft_gallery_action_init() {
 		// Localization.
-		load_plugin_textdomain( 'feed-them-gallery', false, CURRENT_PLUGIN_BASENAME . '/languages' );
+		load_plugin_textdomain( CURRENT_PLUGIN_TEXT_DOMAIN, false, CURRENT_PLUGIN_BASENAME . '/languages' );
 	}
 
 	/**
@@ -320,7 +335,7 @@ class BOILER_PLATE_CLASS {
 	 */
 	public function ft_gallery_required_php_check1() {
 		echo sprintf(
-			esc_html__( '%1$sWarning:%2$s Your php version is %3$s. You need to be running at least 5.3 or greater to use this plugin. Please upgrade the php by contacting your host provider. Some host providers will allow you to change this yourself in the hosting control panel too.%4$sIf you are hosting with BlueHost or Godaddy and the php version above is saying you are running 5.2.17 but you are really running something higher please %5$sclick here for the fix%6$s. If you cannot get it to work using the method described in the link please contact your host provider and explain the problem so they can fix it.%7$s', 'feed-them-gallery' ),
+			esc_html__( '%1$sWarning:%2$s Your php version is %3$s. You need to be running at least 5.3 or greater to use this plugin. Please upgrade the php by contacting your host provider. Some host providers will allow you to change this yourself in the hosting control panel too.%4$sIf you are hosting with BlueHost or Godaddy and the php version above is saying you are running 5.2.17 but you are really running something higher please %5$sclick here for the fix%6$s. If you cannot get it to work using the method described in the link please contact your host provider and explain the problem so they can fix it.%7$s', CURRENT_PLUGIN_TEXT_DOMAIN ),
 			'<div class="error"><p><strong>',
 			'</strong>',
 			PHP_VERSION,
@@ -344,7 +359,7 @@ class BOILER_PLATE_CLASS {
 		array_unshift(
 			$actions,
 			sprintf(
-				esc_html__( '%1$sSettings%2$s | %3$sSupport%4$s', 'feed-them-gallery' ),
+				esc_html__( '%1$sSettings%2$s | %3$sSupport%4$s', CURRENT_PLUGIN_TEXT_DOMAIN ),
 				'<a href="' . esc_url( 'edit.php?post_type=ft_gallery&page=ft-gallery-settings-page' ) . '">',
 				'</a>',
 				'<a href="' . esc_url( 'https://www.slickremix.com/support/' ) . '">',
@@ -367,7 +382,7 @@ class BOILER_PLATE_CLASS {
 	public function ft_gallery_leave_feedback_link( $links, $file ) {
 		if ( CURRENT_PLUGIN_BASENAME === $file ) {
 			$links['feedback'] = sprintf(
-				esc_html__( '%1$sRate Plugin%2$s', 'feed-them-gallery' ),
+				esc_html__( '%1$sRate Plugin%2$s', CURRENT_PLUGIN_TEXT_DOMAIN ),
 				'<a href="' . esc_url( 'https://wordpress.org/support/plugin/feed-them-gallery/reviews/' ) . '" target="_blank">',
 				'</a>'
 			);
@@ -499,13 +514,13 @@ class BOILER_PLATE_CLASS {
 				<div class="ftg_notice ftg_review_notice">
 					<img src="<?php echo esc_url( plugins_url( 'feed-them-gallery/admin/css/ft-gallery-logo.png' ) ); ?>" alt="Feed Them Gallery">
 					<div class='ftg-notice-text'>
-						<p><?php echo esc_html( 'It\'s great to see that you\'ve been using our Feed Them Gallery plugin for a while now. Hopefully you\'re happy with it!  If so, would you consider leaving a positive review? It really helps support the plugin and helps others discover it too!', 'feed-them-gallery' ); ?></p>
+						<p><?php echo esc_html( 'It\'s great to see that you\'ve been using our Feed Them Gallery plugin for a while now. Hopefully you\'re happy with it!  If so, would you consider leaving a positive review? It really helps support the plugin and helps others discover it too!', CURRENT_PLUGIN_TEXT_DOMAIN ); ?></p>
 						<p class="ftg-links">
-							<a class="ftg_notice_dismiss" href="<?php echo esc_url( 'https://wordpress.org/support/plugin/feed-them-gallery/reviews/#new-post' ); ?>" target="_blank"><?php echo esc_html__( 'Sure, I\'d love to', 'feed-them-gallery' ); ?></a>
-							<a class="ftg_notice_dismiss" href="<?php echo esc_url( add_query_arg( 'ftg_slick_ignore_rating_notice_nag', '1' ) ); ?>"><?php echo esc_html__( 'I\'ve already given a review', 'feed-them-gallery' ); ?></a>
-							<a class="ftg_notice_dismiss" href="<?php echo esc_url( add_query_arg( 'ftg_slick_ignore_rating_notice_nag', 'later' ) ); ?>"><?php echo esc_html__( 'Ask me later', 'feed-them-gallery' ); ?> </a>
-							<a class="ftg_notice_dismiss" href="<?php echo esc_url( 'https://wordpress.org/support/plugin/feed-them-gallery/#new-post' ); ?>" target="_blank"><?php echo esc_html__( 'Not working, I need support', 'feed-them-gallery' ); ?></a>
-							<a class="ftg_notice_dismiss" href="<?php echo esc_url( add_query_arg( 'ftg_slick_ignore_rating_notice_nag', '1' ) ); ?>"><?php echo esc_html__( 'No thanks', 'feed-them-gallery' ); ?></a>
+							<a class="ftg_notice_dismiss" href="<?php echo esc_url( 'https://wordpress.org/support/plugin/feed-them-gallery/reviews/#new-post' ); ?>" target="_blank"><?php echo esc_html__( 'Sure, I\'d love to', CURRENT_PLUGIN_TEXT_DOMAIN ); ?></a>
+							<a class="ftg_notice_dismiss" href="<?php echo esc_url( add_query_arg( 'ftg_slick_ignore_rating_notice_nag', '1' ) ); ?>"><?php echo esc_html__( 'I\'ve already given a review', CURRENT_PLUGIN_TEXT_DOMAIN ); ?></a>
+							<a class="ftg_notice_dismiss" href="<?php echo esc_url( add_query_arg( 'ftg_slick_ignore_rating_notice_nag', 'later' ) ); ?>"><?php echo esc_html__( 'Ask me later', CURRENT_PLUGIN_TEXT_DOMAIN ); ?> </a>
+							<a class="ftg_notice_dismiss" href="<?php echo esc_url( 'https://wordpress.org/support/plugin/feed-them-gallery/#new-post' ); ?>" target="_blank"><?php echo esc_html__( 'Not working, I need support', CURRENT_PLUGIN_TEXT_DOMAIN ); ?></a>
+							<a class="ftg_notice_dismiss" href="<?php echo esc_url( add_query_arg( 'ftg_slick_ignore_rating_notice_nag', '1' ) ); ?>"><?php echo esc_html__( 'No thanks', CURRENT_PLUGIN_TEXT_DOMAIN ); ?></a>
 						</p>
 
 					</div>

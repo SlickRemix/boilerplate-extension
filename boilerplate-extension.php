@@ -6,11 +6,11 @@
  *
  * Plugin Name: BOILERPLATE EXTENSION
  * Plugin URI: https://www.slickremix.com/
- * Description: Create Beautiful Responsive Galleries in Minutes. Choose the number of columns, loadmore button, popup and more! Sell your Galleries or individual Images with WooCommerce, watermark them, zip galleries, create Albums, create Tags for Images and Galleries, search Galleries and Images with tags, and pagination in our premium version.
+ * Description: This is a BOILERPLATE EXTENSION for creating extensions for SlickRemix plugins.
  * Version: 1.0.0
  * Author: SlickRemix
  * Author URI: https://www.slickremix.com/
- * Text Domain: boilerplate
+ * Text Domain: boilerplate-extension
  * Domain Path: /languages
  * Requires at least: WordPress 4.7.0
  * Tested up to: WordPress 5.2.2
@@ -21,7 +21,7 @@
  * WC tested up to: 3.6.5
  *
  * @version  1.0.0
- * @package  FeedThemSocial/Core
+ * @package  BOILERPLATE_EXTENSION/Core
  * @copyright   Copyright (c) 2012-2019 SlickRemix
  *
  * Need Support? https://www.slickremix.com/my-account

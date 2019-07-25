@@ -114,30 +114,30 @@ class updater_license_page {
         ?>
         <tr valign="top" class="ftg-license-wrap">
             <th scope="row" valign="top">
-                <?php _e($plugin_name, 'feed-them-gallery'); ?>
+                <?php _e($plugin_name, CURRENT_PLUGIN_TEXT_DOMAIN); ?>
             </th>
             <td>
-                <input id="<?php echo $this->setting_option_name ?>[<?php echo $key ?>][license_key]" name="<?php echo $this->setting_option_name ?>[<?php echo $key ?>][license_key]" type="text" placeholder="<?php _e('Enter your license key', 'feed-them-gallery'); ?>" class="regular-text" value="<?php esc_attr_e($license); ?>"/>
+                <input id="<?php echo $this->setting_option_name ?>[<?php echo $key ?>][license_key]" name="<?php echo $this->setting_option_name ?>[<?php echo $key ?>][license_key]" type="text" placeholder="<?php _e('Enter your license key', CURRENT_PLUGIN_TEXT_DOMAIN); ?>" class="regular-text" value="<?php esc_attr_e($license); ?>"/>
                 <label class="description" for="<?php echo $this->setting_option_name ?>[<?php echo $key ?>][license_key]"><?php if ($status !== false && $status == 'valid') { ?>
 
                         <?php wp_nonce_field('license_page_nonce', 'license_page_nonce'); ?>
-                        <input type="submit" class="button-secondary" name="<?php echo $key ?>_license_deactivate" value="<?php _e('Deactivate License', 'feed-them-gallery'); ?>"/>
+                        <input type="submit" class="button-secondary" name="<?php echo $key ?>_license_deactivate" value="<?php _e('Deactivate License', CURRENT_PLUGIN_TEXT_DOMAIN); ?>"/>
 
-                        <div class="edd-license-data"><p><?php _e('License Key Active.', 'feed-them-gallery'); ?></p></div>
+                        <div class="edd-license-data"><p><?php _e('License Key Active.', CURRENT_PLUGIN_TEXT_DOMAIN); ?></p></div>
 
                         <?php
                     } else {
                         wp_nonce_field('license_page_nonce', 'license_page_nonce'); ?>
                         <div class="edd-license-data edd-license-msg-error">
                             <p><?php echo $license_error ?><?php $this->update_admin_notices();
-                                _e('To receive updates notifications, please enter your valid license key.', 'feed-them-gallery'); ?></p>
+                                _e('To receive updates notifications, please enter your valid license key.', CURRENT_PLUGIN_TEXT_DOMAIN); ?></p>
                         </div>
                     <?php } ?></label>
 
                 <?php
                 //Create Upgrade Button
                 if (isset($license) && !empty($license) && $status !== false && $status == 'valid') {
-                    echo sprintf(__('%1$sUpgrade License%2$s', 'feed-them-gallery'),
+                    echo sprintf(__('%1$sUpgrade License%2$s', CURRENT_PLUGIN_TEXT_DOMAIN),
                         '<a class="edd-upgrade-license-btn button-secondary" target="_blank" href="'.esc_url('https://www.slickremix.com/my-account/?&view=upgrades&license_key=' . $license ).'">',
                         '</a>'
                     );
@@ -155,7 +155,7 @@ class updater_license_page {
     public function license_menu() {
         global $submenu;
 
-        add_submenu_page($this->main_menu_slug, __('Plugin License', 'feed-them-gallery'), __('Plugin License', 'feed-them-gallery'), 'manage_options', $this->license_page_slug, array($this, 'license_page'));
+        add_submenu_page($this->main_menu_slug, __('Plugin License', CURRENT_PLUGIN_TEXT_DOMAIN), __('Plugin License', CURRENT_PLUGIN_TEXT_DOMAIN), 'manage_options', $this->license_page_slug, array($this, 'license_page'));
     }
 
     /**
@@ -167,9 +167,9 @@ class updater_license_page {
 
         ?>
         <div class="wrap">
-            <h2><?php _e('Plugin License Options', 'feed-them-gallery'); ?></h2>
+            <h2><?php _e('Plugin License Options', CURRENT_PLUGIN_TEXT_DOMAIN); ?></h2>
             <div class="license-note"> <?php
-                echo sprintf(__('If you need more licenses or your key has expired, please go to the %1$sMY ACCOUNT%2$s page on our website to upgrade or renew your license.%3$sTo get started follow the instructions below.', 'feed-them-gallery'),
+                echo sprintf(__('If you need more licenses or your key has expired, please go to the %1$sMY ACCOUNT%2$s page on our website to upgrade or renew your license.%3$sTo get started follow the instructions below.', CURRENT_PLUGIN_TEXT_DOMAIN),
                     '<a href="'.esc_url('https://www.slickremix.com/my-account/').'" target="_blank">',
                     '</a>',
                     '<br/>'
@@ -179,13 +179,13 @@ class updater_license_page {
             <div class="ftg-activation-msg">
                 <ol>
                     <li><?php
-                       echo sprintf(__('Install the zip file of the plugin you should have received after purchase on the %1$splugins page%2$s and leave the free version active too.', 'feed-them-gallery'),
+                       echo sprintf(__('Install the zip file of the plugin you should have received after purchase on the %1$splugins page%2$s and leave the free version active too.', CURRENT_PLUGIN_TEXT_DOMAIN),
                            '<a href="'.esc_url('plugin-install.php').'">',
                            '</a>'
                        ); ?>
                     </li>
                     <li><?php
-                        echo sprintf(__('Now Enter your License Key and Click the %1$Save Changes button%2$s', 'feed-them-gallery'),
+                        echo sprintf(__('Now Enter your License Key and Click the %1$Save Changes button%2$s', CURRENT_PLUGIN_TEXT_DOMAIN),
                             '<strong>',
                             '</strong>'
                         ); ?>
@@ -250,24 +250,24 @@ class updater_license_page {
         ?>
 
         <tr valign="top" class="ftg-license-wrap">
-            <th scope="row" valign="top"><?php _e($this->plugin_title, 'feed-them-gallery'); ?></th>
+            <th scope="row" valign="top"><?php _e($this->plugin_title, CURRENT_PLUGIN_TEXT_DOMAIN); ?></th>
             <td>
                 <div class="ftg-no-license-overlay">
                     <div class="ftg-no-license-button-wrap">
-                        <?php echo sprintf(__('%1$sDemo%2$s', 'feed-them-gallery'),
+                        <?php echo sprintf(__('%1$sDemo%2$s', CURRENT_PLUGIN_TEXT_DOMAIN),
                         '<a class="ftg-no-license-button-purchase-btn" href="'.esc_url($this->demo_url).'" target="_blank">',
                             '</a>'
                         );  ?>
 
-                        <?php echo sprintf(__('%1$sBuy Extension%2$s', 'feed-them-gallery'),
+                        <?php echo sprintf(__('%1$sBuy Extension%2$s', CURRENT_PLUGIN_TEXT_DOMAIN),
                             '<a class="ftg-no-license-button-demo-btn" href="'.esc_url($this->purchase_url).'" target="_blank">',
                             '</a>'
                         );  ?>
                     </div>
                 </div>
-                <input id="no_license_key" name="no_license_key" type="text" placeholder="<?php _e('Enter your license key', 'feed-them-gallery'); ?>" class="regular-text" value="">
+                <input id="no_license_key" name="no_license_key" type="text" placeholder="<?php _e('Enter your license key', CURRENT_PLUGIN_TEXT_DOMAIN); ?>" class="regular-text" value="">
                 <label class="description" for="no_license_key">
-                    <div class="edd-license-data edd-license-msg-error"><p><?php _e('To receive updates notifications, please enter your valid license key.', 'feed-them-gallery'); ?></p></div>
+                    <div class="edd-license-data edd-license-msg-error"><p><?php _e('To receive updates notifications, please enter your valid license key.', CURRENT_PLUGIN_TEXT_DOMAIN); ?></p></div>
                 </label>
             </td>
         </tr>
@@ -294,7 +294,7 @@ class updater_license_page {
             $license_data = json_decode($response[$plugin_key]);
 
             if (isset($license_data->payment_id) && !empty($license_data->payment_id) && isset($license_data->payment_id) && !empty($license_data->payment_id)) {
-                echo sprintf(__('%1$sUpgrade License%2$s', 'feed-them-gallery'),
+                echo sprintf(__('%1$sUpgrade License%2$s', CURRENT_PLUGIN_TEXT_DOMAIN),
                     '<a class="edd-upgrade-license-btn button-secondary" href="'.esc_url('https://www.slickremix.com/my-account/?&view=upgrades&license_key=' . $license_data->license_id).'" target="_blank">',
                     '</a>'
                 );
@@ -372,7 +372,7 @@ class updater_license_page {
             if (is_wp_error($response)) {
                 $message = $response->get_error_message();
             } else {
-                $message = __('An error occurred, please try again.', 'feed-them-gallery');
+                $message = __('An error occurred, please try again.', CURRENT_PLUGIN_TEXT_DOMAIN);
             }
 
         } else {
@@ -385,40 +385,40 @@ class updater_license_page {
                     case 'expired' :
 
                         $message = sprintf(
-                            __('Your license key expired on %s.', 'feed-them-gallery'),
+                            __('Your license key expired on %s.', CURRENT_PLUGIN_TEXT_DOMAIN),
                             date_i18n(get_option('date_format'), strtotime($license_data->expires, time()))
                         );
                         break;
 
                     case 'revoked' :
 
-                        $message = __('Your license key has been disabled.', 'feed-them-gallery');
+                        $message = __('Your license key has been disabled.', CURRENT_PLUGIN_TEXT_DOMAIN);
                         break;
 
                     case 'missing' :
 
-                        $message = __('Invalid license.', 'feed-them-gallery');
+                        $message = __('Invalid license.', CURRENT_PLUGIN_TEXT_DOMAIN);
                         break;
 
                     case 'invalid' :
                     case 'site_inactive' :
 
-                        $message = __('Your license is not active for this URL.', 'feed-them-gallery');
+                        $message = __('Your license is not active for this URL.', CURRENT_PLUGIN_TEXT_DOMAIN);
                         break;
 
                     case 'item_name_mismatch' :
 
-                        $message = sprintf(__('This appears to be an invalid license key for %s.', 'feed-them-gallery'), $this->prem_plugins[$key]['title']);
+                        $message = sprintf(__('This appears to be an invalid license key for %s.', CURRENT_PLUGIN_TEXT_DOMAIN), $this->prem_plugins[$key]['title']);
                         break;
 
                     case 'no_activations_left':
 
-                        $message = __('Your license key has reached its activation limit.', 'feed-them-gallery');
+                        $message = __('Your license key has reached its activation limit.', CURRENT_PLUGIN_TEXT_DOMAIN);
                         break;
 
                     default :
 
-                        $message = __('An error occurred, please try again.', 'feed-them-gallery');
+                        $message = __('An error occurred, please try again.', CURRENT_PLUGIN_TEXT_DOMAIN);
                         break;
                 }
             }
@@ -464,7 +464,7 @@ class updater_license_page {
             if (is_wp_error($response)) {
                 $message = $response->get_error_message();
             } else {
-                $message = __('An error occurred, please try again.', 'feed-them-gallery');
+                $message = __('An error occurred, please try again.', CURRENT_PLUGIN_TEXT_DOMAIN);
             }
         }
 
