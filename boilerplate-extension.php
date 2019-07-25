@@ -33,11 +33,12 @@
  *  TO MAKE NEW PLUGIN/EXTENSION OUT OF THIS BOILERPLATE.
  * 1 - 'Find and Replace' all BOILER_PLATE_NAMESPACE with plugin namespace.
  * 2 - 'Find and Replace' BOILER_PLATE_CLASS with main plugin class name.
-
+ * 3 - Change plugin path variable on class-load-plugin.php
  */
 
 // Doing this ensure's any js or css changes are reloaded properly. Added to enqueued css and js files throughout.
 define( 'BOILERPLATE_CURRENT_VERSION', '1.0.0' );
+
 
 // Require file for plugin loading.
 require_once __DIR__ . '/class-load-plugin.php';

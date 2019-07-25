@@ -16,6 +16,13 @@ namespace BOILER_PLATE_NAMESPACE;
 class BOILER_PLATE_CLASS {
 
 	/**
+	 * Folder and Main File Name of plugin.
+	 *
+	 * @var string
+	 */
+	public $rel_plugin_path = 'boilerplate-extension/boilerplate-extension.php';
+
+	/**
 	 * Load Function
 	 *
 	 * Load up all our actions and filters.
@@ -31,7 +38,7 @@ class BOILER_PLATE_CLASS {
 		$albums_main_post_type = 'ft_gallery_albums';
 
 		// Setup Constants for FT Gallery.
-		self::setup_constants();
+		self::setup_constants( $plugin_loaded );
 
 		// Pre Plugin Checks (must be after setup_constants function).
 		$plugin_loaded->pre_plugin_checks();
@@ -75,7 +82,7 @@ class BOILER_PLATE_CLASS {
 	 *
 	 * @since 1.0.0
 	 */
-	private static function setup_constants() {
+	private static function setup_constants( $plugin_loaded ) {
 		// Makes sure the plugin is defined before trying to use it.
 		if ( ! function_exists( 'is_plugin_active' ) ) {
 			require_once ABSPATH . '/wp-admin/includes/plugin.php';
@@ -83,7 +90,7 @@ class BOILER_PLATE_CLASS {
 
 		// Plugin Basename.
 		if ( ! defined( __NAMESPACE__ . '\CURRENT_PLUGIN_BASENAME' ) ) {
-			define( __NAMESPACE__ . '\CURRENT_PLUGIN_BASENAME', 'feed-them-gallery/feed-them-gallery.php' );
+			define( __NAMESPACE__ . '\CURRENT_PLUGIN_BASENAME', $plugin_loaded->rel_plugin_path );
 		}
 
 		// Plugins Absolute Path. (Needs to be after BASENAME constant to work).

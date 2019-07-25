@@ -171,7 +171,7 @@ cURL: <?php echo function_exists( 'curl_init' ) ? 'Your server supports cURL.' :
 			}
 			endif;
 
-		if ( is_plugin_active( 'feed-them-gallery/feed-them-gallery.php' ) ) {
+		if ( is_plugin_active( CURRENT_PLUGIN_BASENAME ) ) {
 			$feed_them_gallery_license_key = get_option( 'feed_them_gallery_license_key' );
 			?>
 
