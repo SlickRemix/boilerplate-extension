@@ -33,7 +33,8 @@
  *  TO MAKE NEW PLUGIN/EXTENSION OUT OF THIS BOILERPLATE.
  * 1 - 'Find and Replace' all BOILER_PLATE_NAMESPACE with plugin namespace.
  * 2 - 'Find and Replace' BOILER_PLATE_CLASS with main plugin class name.
- * 3 - Change plugin path variable on class-load-plugin.php
+ * 3 - Change 'plugin path' variable on class-load-plugin.php file.
+ * 4 - Change 'Text Domain' name for the plugin on class-load-plugin.php file this changes it accross the entire plugin.Í
  */
 
 // Doing this ensure's any js or css changes are reloaded properly. Added to enqueued css and js files throughout.
